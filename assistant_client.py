@@ -51,11 +51,8 @@ class Receive(threading.Thread):
         while True:
             message = self.sock.recv(1024).decode('ascii')
             if message:
-                if self.messages:
-                    print('...')
-                    print('\r{}\n{}: '.format(message, self.name), end='')
-                else:
-                    print('\r{}\n{}: '.format(message, self.name), end='')
+                print(message)
+                
             else:
                 print('\nDisconnected from server')
                 print('Quitting...')
@@ -119,7 +116,6 @@ def main(host, port):
     while True:
         message = input('{}: '.format(client.name))
         client.send(message)
-        receive.messages(message)
 
 
 if __name__ == "__main__":

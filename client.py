@@ -55,7 +55,7 @@ class Receive(threading.Thread):
             if message:
                 if self.messages:
                     self.messages.insert(tk.END, message)
-                    print('hi')
+                    print('...')
                     print('\r{}\n{}: '.format(message, self.name), end='')
                 else:
                     print('\r{}\n{}: '.format(message, self.name), end='')
