@@ -114,12 +114,12 @@ class Client:
 
 def main(host, port):
     client = Client(host, port)
-    receive = client.start()
+    client.start()
 
     while True:
         message = input('{}: '.format(client.name))
         client.send(message)
-        receive.messages(message)
+
 
 
 if __name__ == "__main__":
