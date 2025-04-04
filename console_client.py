@@ -94,32 +94,17 @@ class Client:
         self.sock.sendall('Server: {} has joined the chat.'.format(self.name).encode('ascii'))
 
         print("\rReady! Leave the chatroom anytime by typing 'QUIT'.\n")
-        print('{}: \n\n'.format(self.name), end='')
+        print('{}: '.format(self.name), end='')
 
         return receive
     
-
-    def send(self, message):
-        #Sends message data to the server for broadcasting
-        if message == 'QUIT':
-            self.sock.sendall('Server: {} has left the chat'.format(self.name).encode('ascii'))
-            
-            print('\nQuitting...')
-            self.sock.close()
-            os._exit(0)
-
-        else:
-            self.sock.sendall('{}: {}'.format(self.name, message).encode('ascii'))
 
 
 def main(host, port):
     client = Client(host, port)
     client.start()
 
-    while True:
-        message = input('{}: '.format(client.name))
-        client.send(message)
-
+   
 
 
 if __name__ == "__main__":
